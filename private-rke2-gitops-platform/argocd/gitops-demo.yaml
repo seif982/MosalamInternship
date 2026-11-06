@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops-demo
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/seif982/MosalamInternship.git
+    targetRevision: main
+    path: private-rke2-gitops-platform/applications/gitops-demo/base
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitops-demo
